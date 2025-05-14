@@ -10,15 +10,15 @@ import {
   getServicesFromFileSystem,
   saveServicesToFileSystem,
   getWorkshopsFromFileSystem,
-  saveWorkshopsToFileSystem,
+  saveWorkshopsToFileFileSystem,
   getBestPracticesFromFileSystem,
-  saveBestPracticesToFileSystem,
+  saveBestPracticesToFileFileSystem,
   getResourcesFromFileSystem,
   saveResourcesToFileSystem,
   getMailConfigFromFileSystem,
-  saveMailConfigToFileSystem,
+  saveMailConfigToFileFileSystem,
   getLandingPageFromFileSystem,
-  saveLandingPageToFileSystem,
+  saveLandingPageToFileFileSystem,
   initializeFileSystemDB,
   resetFileSystemDB,
 } from "./fs-db-actions"
@@ -218,7 +218,7 @@ export async function saveWorkshops(workshops: any[]) {
     const sanitizedWorkshops = validatedWorkshops.map((workshop) => sanitizeForServer(workshop))
 
     // Speichere in der Dateisystem-Datenbank
-    const success = await saveWorkshopsToFileSystem(sanitizedWorkshops)
+    const success = await saveWorkshopsToFileFileSystem(sanitizedWorkshops)
 
     if (success) {
       debug(`${sanitizedWorkshops.length} Workshops in der Dateisystem-Datenbank gespeichert`)
@@ -278,7 +278,7 @@ export async function saveBestPractices(bestPractices: any[]) {
     const sanitizedBestPractices = bestPractices.map((bp) => sanitizeForServer(bp))
 
     // Speichere in der Dateisystem-Datenbank
-    const success = await saveBestPracticesToFileSystem(sanitizedBestPractices)
+    const success = await saveBestPracticesToFileFileSystem(sanitizedBestPractices)
 
     if (success) {
       debug(`${sanitizedBestPractices.length} Best Practices in der Dateisystem-Datenbank gespeichert`)
@@ -400,7 +400,7 @@ export async function saveLandingPage(landingPage: any) {
     const sanitizedLandingPage = sanitizeForServer(landingPage)
 
     // Speichere in der Dateisystem-Datenbank
-    const success = await saveLandingPageToFileSystem(sanitizedLandingPage)
+    const success = await saveLandingPageToFileFileSystem(sanitizedLandingPage)
 
     if (success) {
       debug(`Landing Page in der Dateisystem-Datenbank gespeichert`)
@@ -462,7 +462,7 @@ export async function saveMailConfig(mailConfig: any) {
     const sanitizedMailConfig = sanitizeForServer(mailConfig)
 
     // Speichere in der Dateisystem-Datenbank
-    const success = await saveMailConfigToFileSystem(sanitizedMailConfig)
+    const success = await saveMailConfigToFileFileSystem(sanitizedMailConfig)
 
     if (success) {
       debug(`Mail-Konfiguration in der Dateisystem-Datenbank gespeichert`)

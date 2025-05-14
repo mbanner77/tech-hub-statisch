@@ -1,3 +1,6 @@
+// Entferne alle Neon-spezifischen Imports und Code
+// Behalte nur die Dexie.js-Implementierung
+
 import Dexie, { type Table } from "dexie"
 import type { ILandingPageData } from "@/types/landing-page"
 
@@ -290,7 +293,7 @@ class RealcoreDatabase extends Dexie {
 export const db = new RealcoreDatabase()
 
 // Hilfsfunktion zum sicheren Speichern eines einzelnen Elements
-async function safePut<T>(table: Table<T, any>, item: any): Promise<boolean> {
+export async function safePut<T>(table: Table<T, any>, item: any): Promise<boolean> {
   try {
     // Bereinige das Element je nach Tabellentyp
     let cleanItem: any
@@ -547,6 +550,3 @@ export async function updateDatabaseWithDefaults() {
     return false
   }
 }
-
-// Exportiere die safePut-Funktion für die Verwendung in anderen Modulen
-export { safePut }
